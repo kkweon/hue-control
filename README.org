@@ -1,0 +1,13 @@
+* Hue Control Light
+
+- Web application to control the Phillips Hue Lights
+- WIP
+
+
+
+* Build
+
+#+BEGIN_SRC bash output
+sudo npm install -g elm
+elm-make src/elm/Main.elm --output public/index.html
+#+END_SRC
