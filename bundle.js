@@ -81,11 +81,11 @@ var mountNode = document.getElementById("app");
 var app = Elm.Main.embed(mountNode);
 
 // Tplink Port
-var token = "74e9479a-be5813fd26d040a293430fc";
+var token = "77777777";
 var appUrl = "https://use1-wap.tplinkcloud.com";
 
 var myPlugUrl = appUrl + "/?token=" + token;
-var deviceId = "800694C5DAE977CC4F12F237733201A417BCA26D";
+var deviceId = "77777777777777777777777";
 
 function updateTplink() {
     Tplink.getStatus(deviceId, myPlugUrl, app.ports.receiveInfo.send);
