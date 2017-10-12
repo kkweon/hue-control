@@ -4,13 +4,7 @@ import Hue.HueDecoder as HueDecoder exposing (LightGroup)
 import Json.Decode
 import Json.Encode
 import Http
-import Material
 import Hue.Model exposing (Model, baseAPIUrl)
-
-
-
-type alias Mdl =
-    Material.Model
 
 
 initModel : Model
@@ -18,7 +12,6 @@ initModel =
     { lightGroups = []
     , errorMessage = Nothing
     , loading = True
-    , mdl = Material.model
     }
 
 
@@ -32,7 +25,6 @@ type Msg
     | TurnOff LightGroup
     | UpdateGroup (Result Http.Error Json.Decode.Value)
     | UpdateSwitch (Result Http.Error Json.Decode.Value)
-    | Mdl (Material.Msg Msg)
     | Refresh
 
 
@@ -77,9 +69,6 @@ update msg model =
 
         Refresh ->
             model ! [ getGroups ]
-
-        Mdl message ->
-            Material.update Mdl message model
 
 
 getGroups : Cmd Msg

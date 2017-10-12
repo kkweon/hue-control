@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+h2 {
+    margin-top: 2%;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2em;
+}
+
+h4 {
+    margin: 0;
+    font-weight: 300;
+}
+
+.container {
+    width: 70vh;
+    margin: 0 auto 0 auto;
+}
+
+.light-on {
+    background-color: #FFC107;
+}
+
+.light-off {
+    background-color: #9E9E9E;
+}
+
+input.clickable {
+    display: block;
+    margin: 0 auto 2% auto;
+}
+
+.clickable {
+    transition: background-color .2s;
+}
+
+.clickable:hover.light-on {
+    background-color: #FF6F00;
+}
+
+.clickable:hover.light-off {
+    background-color: #FFECB3;
+}
+
+.list-item {
+    margin-bottom: 3%;
+    height: 100px;
+}
+
+.sub-heading {
+    border-bottom: #9E9E9E 1px solid;
+}

@@ -98,25 +98,6 @@ getGroups groupUrl =
     Http.get groupUrl Json.Decode.value
 
 
-
--- [
--- 	{
--- 		"error": {
--- 			"type": 7,
--- 			"address": "/groups/1/action/on",
--- 			"description": "invalid value, 222 } , for parameter, on"
--- 		}
--- 	}
--- ]
--- [
--- 	{
--- 		"success": {
--- 			"/groups/1/action/on": false
--- 		}
--- 	}
--- ]
-
-
 type alias SignalMessage =
     { result : String
     , address : String

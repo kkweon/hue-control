@@ -1,7 +1,6 @@
 module Hue.Model exposing (baseAPIUrl, Model)
 
 import Hue.HueDecoder exposing (LightGroup, getGroups)
-import Material
 
 
 bridgeIP : String
@@ -18,7 +17,6 @@ type alias Model =
     { lightGroups : List LightGroup
     , errorMessage : Maybe String
     , loading : Bool
-    , mdl : Material.Model
     }
 
 

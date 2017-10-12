@@ -1,19 +1,29 @@
 module Hue.View exposing (view)
 
-import Material
-import Material.Card as Card
-import Material.Color as Color
-import Material.Grid exposing (grid, cell, size, Device(..))
-import Material.Button as Button
-import Material.Spinner as Loading
-import Material.Scheme
-import Material.Options as Options exposing (css)
-import Material.Typography as Typo
 import Hue.Model exposing (Model)
-import Html exposing (text, p, div)
+import Html
+    exposing
+        ( text
+        , p
+        , div
+        , h2
+        , h4
+        , input
+        , ul
+        , li
+        , span
+        , i
+        , Html
+        )
+import Html.Attributes
+    exposing
+        ( class
+        , value
+        , type_
+        )
+import Html.Events exposing (onClick)
 import Hue.Update exposing (Msg(..))
 import Hue.HueDecoder exposing (LightGroup)
-
 
 
 view : Model -> Html.Html Msg
@@ -21,55 +31,39 @@ view model =
     let
         loadingView =
             if model.loading then
-                [ Loading.spinner [ Loading.active model.loading ] ]
-                    |> cell [ size All 12 ]
+                div [ class "mdl-spinner mdl-js-spinner is-active" ] []
             else
-                cell [ size All 12 ]
-                    [ text ""
-                    ]
+                text ""
 
         title =
-            cell [ size All 12 ]
-                [ Options.styled p
-                    [ Typo.display2 ]
-                    [ text "Light Groups" ]
-                ]
+            h2 [ class "display-3" ] [ text "Elise's Home Control" ]
 
         refreshButton =
-            cell [ size All 12 ]
-                [ Button.render Mdl
-                    [ 0 ]
-                    model.mdl
-                    [ Button.raised
-                    , Button.colored
-                    , Button.ripple
-                    , Options.onClick Refresh
-                    ]
-                    [ text "Refresh" ]
+            input
+                [ type_ "button"
+                , class "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent clickable"
+                , onClick Refresh
+                , value "Refresh"
                 ]
+                []
     in
-        [ title
-        , refreshButton
-        , loadingView
-        , cell [ size All 12 ] [ viewLightGroups model ]
-        ]
-            |> grid []
-            |> Material.Scheme.top
+        div []
+            [ title
+            , refreshButton
+            , loadingView
+            , h4 [ class "display-3 sub-heading"] [ text "Hue"]
+            , viewLightGroups model
+            ]
 
 
 viewLightGroups : Model -> Html.Html Msg
 viewLightGroups model =
     model.lightGroups
         |> List.map viewSingleLightGroup
-        |> div []
+        |> ul [ class "two mdl-list" ]
 
 
-white : Options.Property c m
-white =
-    Color.text Color.white
-
-
-viewSingleLightGroup : LightGroup -> Html.Html Msg
+viewSingleLightGroup : LightGroup -> Html Msg
 viewSingleLightGroup lightgroup =
     let
         allLightOn =
@@ -78,38 +72,29 @@ viewSingleLightGroup lightgroup =
         anyLightOn =
             lightgroup.state.any_on
 
-        color =
-            if allLightOn then
-                Color.color Color.Blue Color.S600
-            else
-                (if anyLightOn then
-                    Color.color Color.BlueGrey Color.S600
-                 else
-                    Color.color Color.Grey Color.S600
-                )
-
-        action =
+        ( action, icon ) =
             if anyLightOn then
-                TurnOff
+                ( TurnOff, "wb_sunny" )
             else
-                TurnOn
+                ( TurnOn, "lightbulb_outline" )
+
+        liClass =
+            "mdl-list__item mdl-list__item--two-line clickable list-item "
+                ++ (if anyLightOn then
+                        "light-on"
+                    else
+                        "light-off"
+                   )
     in
-        Card.view
-            [ css "width" "100%"
-            , Color.background (color)
-            , css "margin-bottom" "2%"
-            , Options.onClick <| action lightgroup
-            ]
-            [ Card.title
-                [ css "align-content" "flex-start"
-                , css "flex-direction" "row"
-                , css "align-items" "flex-start"
-                , css "justify-content" "space-between"
+        li [ class liClass, onClick (action lightgroup) ]
+            [ span [ class "mdl-list__item-primary-content" ]
+                [ text lightgroup.name
                 ]
-                [ Options.div
-                    []
-                    [ Card.head [ white ] [ text lightgroup.name ]
-                    , Card.subhead [ white ] [ text <| toString anyLightOn ]
+            , span
+                [ class "mdl-list__item-secondary-content"
+                ]
+                [ span [ class "mdl-list__item-secondary-action" ]
+                    [ i [ class "material-icons" ] [ text icon ]
                     ]
                 ]
             ]
