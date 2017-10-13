@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     node: {
@@ -20,6 +21,10 @@ module.exports = {
         }),
 
         new ExtractTextPlugin("style.css"),
+        new CopyWebpackPlugin([{
+            from: "src/static",
+            to: "static"
+        }])
     ],
     module: {
         rules: [{
@@ -46,7 +51,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader"
+                    use: ["css-loader", "postcss-loader"]
                 })
             },
             {
@@ -55,7 +60,7 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     //resolve-url-loader may be chained before sass-loader if necessary
-                    use: ['css-loader', 'sass-loader']
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
                 })
             }
         ]

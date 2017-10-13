@@ -4,6 +4,7 @@ import Hue.Model exposing (Model)
 import Html
     exposing
         ( text
+        , button
         , p
         , div
         , h2
@@ -39,19 +40,17 @@ view model =
             h2 [ class "display-3" ] [ text "Elise's Home Control" ]
 
         refreshButton =
-            input
-                [ type_ "button"
-                , class "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent clickable"
+            button
+                [ class "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect refresh-btn"
                 , onClick Refresh
-                , value "Refresh"
                 ]
-                []
+                [ text "refresh", i [ class "material-icons" ] [ text "refresh" ] ]
     in
         div []
             [ title
             , refreshButton
             , loadingView
-            , h4 [ class "display-3 sub-heading"] [ text "Hue"]
+            , h4 [ class "display-3 sub-heading" ] [ text "Hue" ]
             , viewLightGroups model
             ]
 
