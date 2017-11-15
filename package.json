@@ -32,7 +32,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && docker build -t kkweon/hue-switch .",
+    "build": "webpack --optimize-minimize && docker build -t kkweon/hue-switch .",
     "start": "webpack-dev-server --inline --hot --open"
   },
   "repository": {
