@@ -11,3 +11,10 @@
 sudo npm install -g elm
 elm-make src/elm/Main.elm --output public/index.html
 #+END_SRC
+
+
+* Get TP Link Token
+
+#+BEGIN_SRC bash
+python get-token-for-tplink.py
+#+END_SRC

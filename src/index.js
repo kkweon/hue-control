@@ -9,7 +9,7 @@ var mountNode = document.getElementById("app");
 var app = Elm.Main.embed(mountNode);
 
 // Tplink Port
-const token = "74e9479a-7ea5d848df1049239a75eaa";
+const token = "74e9479a-19b3d7fbe15f4f2f9455f7e";
 const appUrl = "https://use1-wap.tplinkcloud.com";
 
 const myPlugUrl = appUrl + "/?token=" + token;
