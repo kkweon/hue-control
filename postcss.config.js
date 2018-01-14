@@ -1,8 +1,9 @@
 module.exports = {
-    parser: false,
-    plugins: {
-        'postcss-import': {},
-        'postcss-cssnext': {},
-        'cssnano': {}
-    }
+  parser: false,
+  plugins: {
+    autoprefixer: {},
+    "postcss-import": {},
+    "postcss-cssnext": {},
+    cssnano: {},
+  },
 };

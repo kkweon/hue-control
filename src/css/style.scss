@@ -1,58 +1,60 @@
+$primary-color: #ffc107;
+$gray: #9e9e9e;
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
-    margin-top: 0;
-    text-align: center;
-    font-weight: 100;
-    font-size: 2em;
+  font-size: 2em;
+  font-weight: 100;
+  margin-top: 0;
+  text-align: center;
 }
 
 h4 {
-    margin: 0;
-    font-weight: 300;
+  font-weight: 300;
+  margin: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto 0 auto;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .light-on {
-    background-color: #FFC107;
+  background-color: $primary-color;
 }
 
 .light-off {
-    background-color: #9E9E9E;
+  background-color: $gray;
 }
 
-button.refresh-btn {
-    display: block;
-    margin: 0 auto 2% auto;
-    opacity: 0.7;
-}
+.refresh-btn {
+  display: block;
+  margin: 2% auto;
+  opacity: .8;
 
+  &:hover {
+    box-shadow: 0 5px 10px $gray;
+  }
+}
 
 .clickable {
-    transition: background-color .2s;
-}
+  transition: background-color .2s;
 
-.clickable:hover.light-on {
-    background-color: #FF6F00;
-}
-
-.clickable:hover.light-off {
-    background-color: #FFECB3;
+  &:hover {
+    background-color: lighten($primary-color, 30%);
+  }
 }
 
 .list-item {
-    margin-bottom: 2%;
-    height: 100px;
+  height: 100px;
+  margin-bottom: 2%;
 }
 
 .sub-heading {
-    border-bottom: #9E9E9E 1px solid;
+  border-bottom: $gray 1px solid;
 }
