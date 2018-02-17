@@ -1,0 +1,35 @@
+.light-on {
+  background-color: $primary-color;
+}
+
+.light-off {
+  background-color: $gray;
+}
+
+.refresh-btn {
+  display: block;
+  margin: 2% auto;
+  opacity: 0.8;
+
+  &:hover {
+    box-shadow: 0 5px 10px $gray;
+  }
+}
+
+.clickable {
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($primary-color, 30%);
+  }
+}
+
+.list-item {
+  height: 100px;
+  margin-bottom: 2%;
+}
+
+.sub-heading {
+  border-bottom: $gray 1px solid;
+}
