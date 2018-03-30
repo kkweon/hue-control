@@ -6,7 +6,7 @@ const mountNode: HTMLElement | null = document.getElementById("app");
 const app = Elm.Main.embed(mountNode);
 
 // Tplink Port
-const token: string = "74e9479a-A1CYBZeDFTPLrcCw6WJvoEX";
+const token: string = "74e9479a-A2qZEDqXP1y5AsCrZSFLvDm";
 
 const appUrl = "https://use1-wap.tplinkcloud.com";
 const myPlugUrl = `${appUrl}/?token=${token}`;
@@ -19,11 +19,9 @@ function updateTpLink(): void {
 updateTpLink();
 
 app.ports.turnOff.subscribe(() => {
-  console.log("TurnOff");
   TpLink.turnOff(deviceId, myPlugUrl, updateTpLink);
 });
 
 app.ports.turnOn.subscribe(() => {
-  console.log("TurnOn");
   TpLink.turnOn(deviceId, myPlugUrl, updateTpLink);
 });
