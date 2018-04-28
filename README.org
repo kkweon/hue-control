@@ -1,5 +1,8 @@
 * Hue Control Light
 
+  #+ATTR_HTML: title="Greenkeeper badge"
+  [[https://greenkeeper.io/][file:https://badges.greenkeeper.io/kkweon/hue-control.svg]]
+
 - Web application to control the Phillips Hue Lights
 - WIP
 
